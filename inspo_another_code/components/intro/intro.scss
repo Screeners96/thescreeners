@@ -1,0 +1,119 @@
+@import '../_setup/vars.scss';
+.intro {
+
+    border-bottom: var(--borderWidth) solid black;
+    padding: 50px 20px;
+    @include font-intro-m;
+    
+    p {
+        margin: 0 0 20px;
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    br {
+        margin: 0 0 20px;
+    }
+    
+    h2 {
+        @include font-h2;
+        margin: 20px 0 40px;
+        
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    
+    h3 {
+        @include font-h3;
+        margin: 20px 0 10px;
+        
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    
+    blockquote {
+        @include font-intro-s;
+        margin-top: 20px;
+    }
+    
+    strong {
+        font-family: 'macBold', sans-serif;
+        font-weight: normal;
+    }
+    
+    em {
+        font-style: italic;
+    }
+    
+    a {
+        text-decoration: underline;
+    
+        &[href^="http"], &[href^="https"] {
+            &::after {
+                content: " ↗";
+                text-decoration: none;
+                display: inline-block;
+            }
+        }
+        
+        &[href^="mailto"] {
+            &::after {
+                content: " ↑";
+                text-decoration: none;
+                display: inline-block;
+            }
+        }
+        
+        &:not([href^="http"]):not([href^="https"]):not([href^="mailto"]) {
+            &::after {
+                content: " →";
+                text-decoration: none;
+                display: inline-block;
+            }
+        }
+    }
+
+    ul, ol {
+        margin: 20px 0 20px 20px;
+        
+        li {
+            margin-bottom: 10px;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    ul {
+        list-style-type: disc;
+    }
+    
+    ol {
+        list-style-type: decimal;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .intro {
+        padding-left: 20px;
+        
+        @include font-small;
+        
+        h2 {
+            @include font-h2;
+        }
+        
+        h3 {
+            @include font-h3;
+        }
+        
+        blockquote {
+            @include font-quote;
+        }
+    }
+}

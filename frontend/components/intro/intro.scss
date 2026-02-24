@@ -1,0 +1,48 @@
+@import "../_setup/vars.scss";
+
+.intro {
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    
+    &__title {
+        @include font-h2;
+        color: $color-white;
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+
+    span {
+        min-height: calc(calc(#{$headerHeight} / 2));
+    }
+
+    p {
+        @include font-size-s;
+        color: $color-accent-gold;
+        width: 100%;
+    }
+    
+    @include titleHeight;
+    margin: $padding-sm $margin-side;
+
+
+    @include sm {
+        padding: 0;
+        margin: 0;
+        margin-bottom: $padding-md;
+    }
+
+    @include mm {
+        padding: 0;
+        margin: 0;
+        margin-bottom: $padding-md;
+    }
+
+    @include lg {
+        margin: $padding-md $margin-side-desktop;
+    }
+}

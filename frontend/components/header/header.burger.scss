@@ -1,0 +1,113 @@
+@import "../_setup/vars.scss";
+
+.header__burger {
+  width: $burger;
+  height: $burger;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  box-sizing: border-box;
+  z-index: 10000;
+
+  background-color: $color-dark;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  @include sm {
+    width: $burger-mobile;
+    height: $burger-mobile;
+  }
+
+  @include mm {
+    width: $burger-mobile;
+    height: $burger-mobile;
+  }
+
+  @include lg {
+    width: $burger-desktop;
+    height: $burger-desktop;
+  }
+
+  div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(100% - calc($burger / 2.4)); 
+    height: calc($burger / 12);
+    background-color: $color-white;
+    border-radius: 1px;
+    transform-origin: center;
+    transition: transform $transition-base, opacity $transition-base, background-color $transition-base;
+
+    @include sm {
+      width: calc(100% - calc($burger-mobile / 2.4));
+      height: calc($burger-mobile / 12);
+    }
+
+    @include mm {
+      width: calc(100% - calc($burger-mobile / 2.4));
+      height: calc($burger-mobile / 12);
+    }
+
+    @include lg {
+      width: calc(100% - calc($burger-desktop / 2.4));
+      height: calc($burger-desktop / 12);
+    }
+  }
+
+  div:nth-child(1) {
+    transform: translate(-50%, calc($burger / -4));
+    @include sm {
+      transform: translate(-50%, calc($burger-mobile / -4));
+    }
+    @include mm {
+      transform: translate(-50%, calc($burger-mobile / -4));
+    }
+    @include lg {
+      transform: translate(-50%, calc($burger-desktop / -4));
+    }
+  }
+
+  div:nth-child(2) {
+    transform: translate(-50%, 0);
+  }
+
+  div:nth-child(3) {
+    transform: translate(-50%, calc($burger / 4));
+    @include sm {
+      transform: translate(-50%, calc($burger-mobile / 4));
+    }
+    @include mm {
+      transform: translate(-50%, calc($burger-mobile / 4));
+    }
+    @include lg {
+      transform: translate(-50%, calc($burger-desktop / 4));
+    }
+  }
+
+  &:hover {
+    background-color: $color-accent-gold;
+
+    div {
+      background-color: $color-dark;
+    }
+  }
+
+  &.active {
+    div:nth-child(1) {
+      transform: translate(-50%, 0) rotate(45deg);
+    }
+
+    div:nth-child(2) {
+      opacity: 0;
+    }
+
+    div:nth-child(3) {
+      transform: translate(-50%, 0) rotate(-45deg);
+    }
+  }
+}

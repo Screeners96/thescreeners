@@ -1,0 +1,20 @@
+@import "../_setup/vars.scss";
+
+.languageSwitcher {
+    display: flex;
+    gap: $margin;
+    
+    button {
+        color: $color-white;
+        @include font-size-s;
+        text-transform: uppercase;
+        background: transparent;
+        transition: color $transition-base;
+        padding: 0;
+        
+        &:hover,
+        &.active {
+            color: $color-accent-gold;
+        }
+    }
+}

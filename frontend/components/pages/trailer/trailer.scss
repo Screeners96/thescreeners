@@ -1,0 +1,107 @@
+@import "../../_setup/vars.scss";
+
+.trailer-submenu-wrapper {
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+    @include sm {
+        padding-bottom: $padding-md;
+    }
+
+}
+
+.trailer-submenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: $spacing-md;
+    position: relative;
+}
+
+.trailer-submenu__grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: $spacing-md;
+    max-width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    flex: 1;
+    margin-bottom: calc(#{$margin} * -0.6);
+    @include sm {
+      align-items: center;
+    }
+}
+
+// Same layout as .kino-content-slot (grids.scss) for event/imagefilm – keep phone/sm rules in sync.
+.trailer-content-slot {
+    width: 100%;
+    aspect-ratio: $cinema-scope-slider;
+    margin: $margin auto;
+    flex-shrink: 0;
+    position: relative;
+    min-height: 0;
+
+    @include sm {
+        width: 100%;
+        aspect-ratio: $cinema-scope-slider-reversed;
+        margin-top:0;
+        flex-shrink: 1;
+    }
+
+    .trailer-grids-slider-wrapper {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .trailer-grids-slider {
+        height: 100%;
+    }
+
+    @include sm {
+        .trailer-grids-slider__slide {
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+        .trailer-grids-slider__slide .grid-layout {
+            width: 100% !important;
+            max-width: 100%;
+        }
+    }
+}
+
+.trailer-submenu__item {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    transition: all $transition-base;
+    
+    a {
+        @include menu-button;
+    }
+    
+    &.active a {
+        color: $color-white;
+        border-color: $color-accent-gold;
+    }
+}
+
+.trailer-category-grid {
+    margin-top: $spacing-xl;
+}
+
+.page--trailer {
+    display: flex;
+    flex-direction: column;
+    
+    .trailer-grids-slider-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        flex-shrink: 0;
+    }
+}

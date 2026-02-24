@@ -1,0 +1,20 @@
+.teaserImage {
+  position: relative;
+  background-color: white;
+  border-bottom: var(--borderWidth) solid black;
+  
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .teaserImage {
+    img {
+      height: 60vw;
+    }
+  }
+}

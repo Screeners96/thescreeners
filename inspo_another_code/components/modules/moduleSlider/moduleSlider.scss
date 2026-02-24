@@ -1,0 +1,34 @@
+@import "@/components/_setup/breakpoints.scss";
+@import "@/components/_setup/vars.scss";
+
+.moduleSlider {
+    position: relative;
+    background: white;
+    .slide {
+        width: 100%;
+        height: 40vw;
+
+        @include sm {
+            height: 84vw;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+.moduleSlider__pagination {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 10;
+    background: black;
+    color: white;
+    padding: 10px 20px;  
+    display: block;
+    width: max-content;
+    max-width: 80%;
+}

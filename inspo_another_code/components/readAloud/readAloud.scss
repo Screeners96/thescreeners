@@ -1,0 +1,47 @@
+@import '../_setup/vars.scss';
+
+.readAloud {
+  display: flex;
+  
+  &__button {
+    @include font-h3;
+    background: transparent;
+    color: black;
+    padding: 5px 26.5px 5px;
+    background: white;
+    border-width: var(--borderWidth) var(--borderWidth) var(--borderWidth) 0;
+    border-color: black;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: black;
+      color: white;
+    }
+    
+    &--stop {
+      background: white;
+      
+      &:hover {
+        background: #CE6DFB;
+        color: white;
+      }
+    }
+  }
+  
+  &__lang {
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+}
+
+
+.reading-highlight {
+  background-color: rgba(206, 109, 251, 0.2) !important;
+  transition: all 0.3s ease;
+  width: fit-content;
+}

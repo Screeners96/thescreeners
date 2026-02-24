@@ -1,0 +1,679 @@
+@import "../_setup/vars.scss";
+
+// Event + imagefilm: same layout as .trailer-content-slot (trailer.scss). Keep phone/sm rules in sync.
+.kino-content-slot {
+    width: 100%;
+    aspect-ratio: $cinema-scope-slider;
+    margin: $margin auto;
+    flex-shrink: 0;
+    position: relative;
+    min-height: 0;
+
+    @include sm {
+        width: 100%;
+        aspect-ratio: $cinema-scope-slider-reversed;
+        margin-top: 0;
+        flex-shrink: 1;
+    }
+
+    .trailer-grids-slider-wrapper {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .trailer-grids-slider {
+        height: 100%;
+    }
+
+    @include sm {
+        .trailer-grids-slider__slide {
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+        .trailer-grids-slider__slide .grid-layout {
+            width: 100% !important;
+            max-width: 100%;
+        }
+    }
+}
+
+.imagefilm-main-grids,
+.event-main-grids {
+    margin: $margin auto;
+    display: flex;
+    gap: $column-gap;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    
+    width: 100%;
+    aspect-ratio: $cinema-scope-slider;
+    box-sizing: border-box;
+    padding: 0 $margin-side;
+    
+    overflow-x: visible;
+    overflow-y: hidden;
+
+    @include sm {
+        padding: 0 $margin-side-mobile;
+    }
+
+    @include mm {
+        padding: 0 $margin-side-tablet;
+    }
+
+    @include lg {
+        padding: 0 $margin-side-desktop;
+    }
+}
+
+.trailer-grids-slider-wrapper {
+    position: relative;
+    width: 100%;
+    margin: $margin auto;
+    z-index: 1;
+}
+
+.trailer-grids-slider {
+    width: 100%;
+    aspect-ratio: $cinema-scope-slider;
+    overflow: visible;
+    position: relative;
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+
+    .swiper-wrapper {
+        display: flex;
+        align-items: stretch;
+    }
+
+    &__slide {
+        width: auto;
+        height: auto;
+        flex-shrink: 0;
+        
+        .grid-layout {
+            height: 100%;
+            
+            &.grid-layout--vertical,
+            &.grid-layout--3-vertical {
+                height: 100%;
+                width: calc((100vw / #{$cinema-scope-slider}) * #{$cinema-scope-reversed});
+                max-width: calc((100vw / #{$cinema-scope-slider}) * #{$cinema-scope-reversed});
+                @include sm {
+                    width: auto !important;
+                    max-width: 100% !important;
+                }
+            }
+            
+            &:not(.grid-layout--vertical):not(.grid-layout--3-vertical) {                
+                width: calc((67.8vw - (#{$column-gap} * 2)) * #{$cinema-scope-reversed});
+                max-width: calc((67.8vw - (#{$column-gap} * 2)) * #{$cinema-scope-reversed});
+                @include sm {
+                    width: auto !important;
+                    max-width: 100% !important;
+                }
+            }
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+        background-color: $color-dark;
+        width: $burger;
+        height: $burger;
+        display: flex;
+        border-radius: $radius-sm;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: opacity $transition-base, background-color $transition-base, border-color $transition-base, transform $transition-base;
+        pointer-events: auto;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        animation: fadeInArrow $transition-base forwards;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        border: none;
+        @include sm {
+            width: $burger-mobile;
+            height: $burger-mobile;
+        }
+        @include mm {
+            width: $burger-mobile;
+            height: $burger-mobile;
+        }
+        @include lg {
+            width: $burger-desktop;
+            height: $burger-desktop;
+        }
+
+        svg {
+            width: $burger;
+            height: $burger;
+            stroke: $color-white;
+            transition: stroke $transition-base;
+            @include sm {
+                width: $burger-mobile;
+                height: $burger-mobile;
+            }
+            @include mm {
+                width: $burger-mobile;
+                height: $burger-mobile;
+            }
+            @include lg {
+                width: $burger-desktop;
+                height: $burger-desktop;
+            }
+        }
+
+        &:hover {
+            background-color: $color-accent;
+            
+            svg {
+                stroke: $color-black;
+            }
+        }
+
+        &:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        &--left {
+            left: $padding-xs;
+        }
+
+        &--right {
+            right: $padding-xs;
+        }
+    }
+}
+
+@keyframes fadeInArrow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.trailer-grids-slider__controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: $padding-sm;
+    flex-shrink: 0;
+    display: none;
+    
+    .trailer-submenu & {
+        margin-top: 0;
+        margin-bottom: calc(#{$margin} * -0.6);
+    }
+}
+
+.trailer-grids-slider__button {
+    @include menu-button;
+    background-color: transparent;
+    border: $border-width solid $color-accent;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    &:disabled {
+        opacity: 0.2;
+        cursor: initial;
+        border-color: transparent;
+        &:hover {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+    
+    svg {
+        width: $font-size-s;
+        height: $font-size-s;
+        display: block;
+    }
+}
+
+.trailer-grids-slider__counter {
+    color: $color-white;
+    @include font-size-s;
+    min-width: 50px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.trailer-grids-slider__dots {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: $padding-xs;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    pointer-events: auto;
+
+    .trailer-submenu-wrapper & {
+        top: 0;
+    }
+
+    @include sm {
+        height: $burger-mobile;
+    }
+
+}
+
+.trailer-grids-slider__dot {
+    width: calc(#{$burger} / 3);
+    height: calc(#{$burger} / 3);
+    border-radius: 50%;
+    border: $border-width solid $color-grey;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: background-color $transition-base, border-color $transition-base;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+
+    &:hover {
+        background-color: $color-accent;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    &.is-active {
+        border-color: $color-accent;
+    }
+
+    @include sm {
+        width: calc(#{$burger-mobile} / 2.3);
+        height: calc(#{$burger-mobile} / 2.3);
+    }
+}
+
+.trailer-main-grids {
+    margin: $margin auto;
+    display: flex;
+    gap: $column-gap;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    
+    width: 100%;
+    aspect-ratio: $cinema-scope-image;
+    box-sizing: border-box;
+    padding: 0 $margin-side;
+    
+    overflow-x: visible;
+    overflow-y: hidden;
+
+    @include lg {
+        padding: 0 $margin-side-desktop;
+    }
+}
+
+.grid-layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    flex-shrink: 1;
+
+    &__top {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    
+    &__bottom {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    
+    &__top-left,
+    &__top-right,
+    &__bottom-left,
+    &__bottom-right {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        min-width: 0;
+        
+        aspect-ratio: $cinema-scope-image;
+        height: auto !important;
+        
+        .grid-item__image-wrapper {
+            aspect-ratio: $cinema-scope-image;
+            height: auto !important;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    
+    &__item {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    
+    &--3-bottom {
+        flex: 1 1 calc(4 / 5 * 100%);
+        max-width: calc(4 / 5 * 100%);
+        min-width: calc(4 / 5 * 100%);
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        height: 100%;
+        
+        .trailer-grids-slider__slide & {
+            flex: 1 1 calc((100% - (#{$column-gap} * 2)) / 3);
+            max-width: calc((100% - (#{$column-gap} * 2)) / 3);
+        }
+        
+        .grid-layout__top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $column-gap;
+            flex: 0 0 auto;
+            min-width: 0;
+            
+            .grid-item {
+                width: 100%;
+                height: 100%;
+                
+                
+                &__image-wrapper,
+                &__image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
+        .grid-layout__bottom {
+            width: 100%;
+            max-width: 100%;
+            flex: 1 1 auto;
+            min-width: 0;
+            min-height: 0;
+            
+            .grid-item {
+                width: 100%;
+                height: 100%;
+                
+                &__image-wrapper,
+                &__image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+    
+    &--3-top {
+        flex: 1 1 calc(2 / 5 * 100%);
+        max-width: calc(2 / 5 * 100%);
+        min-width: calc(2 / 5 * 100%);
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        height: 100%;
+        
+        .trailer-grids-slider__slide & {
+            flex: 1 1 calc((100% - (#{$column-gap} * 2)) / 3);
+            max-width: calc((100% - (#{$column-gap} * 2)) / 3);
+        }
+
+        .grid-layout__top {
+            width: 100%;
+            max-width: 100%;
+            flex: 1 1 auto;
+            min-width: 0;
+            min-height: 0;
+            
+            .grid-item {
+                width: 100%;
+                height: 100%;
+                
+                &__image-wrapper,
+                &__image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
+        .grid-layout__bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $column-gap;
+            flex: 0 0 auto;
+            min-width: 0;
+            min-height: 0;
+    
+            
+            .grid-item {
+                width: 100%;
+                height: 100%;
+                
+                &__image-wrapper,
+                &__image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+    
+    &--vertical {
+        flex: 1 1 calc(1 / 5 * 100%);
+        max-width: calc(1 / 5 * 100%);
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        height: 100%;
+        
+        .trailer-grids-slider__slide & {
+            width: calc(100% / #{$cinema-scope-reversed});
+            max-width: calc(100% / #{$cinema-scope-reversed});
+            height: 100%;
+        }
+        
+        .grid-layout__item {
+            flex: 1 1 auto;
+            min-width: 0;
+            aspect-ratio: $cinema-scope-image;
+            height: auto !important;
+
+            .grid-item__image-wrapper {
+                aspect-ratio: $cinema-scope-image;
+                height: auto !important;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+    
+    &--full {
+        flex: 1 1 calc(2 / 5.2 * 100%);
+        max-width: calc(2 / 5.2 * 100%);
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: 100%;
+
+        .grid-item {
+            width: 100%;
+            height: 100%;
+            
+            &__image-wrapper,
+            &__image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    
+    &--3-vertical {
+        flex: 1 1 calc(1 / 5 * 100%);
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        height: 100%;
+        
+        .grid-layout__item {
+            flex: 1 1 auto;
+            min-width: 0;
+            min-height: 0;
+            width: 100%;
+            
+            .grid-item__image-wrapper {
+                width: 100%;
+                height: 100%;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
+        .grid-layout__item--middle {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+    
+}
+
+.grid-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: $radius-sm;
+    background: $color-dark-grey;
+    border-radius: $radius-md;
+    
+    &__image-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform $transition-base;
+    }
+    
+    &:hover &__image {
+        transform: scale(1.05);
+    }
+    
+    &__title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        padding: $padding-md $margin-side $padding-md $padding-md;
+        color: $color-white;
+        @include font-size;
+        font-weight: $font-weight-regular;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity $transition-base;
+
+        @include sm {
+            padding: $padding-md $margin-side-mobile $padding-md $padding-md;
+        }
+
+        @include mm {
+            padding: $padding-md $margin-side-tablet $padding-md $padding-md;
+        }
+
+        @include lg {
+            padding: $padding-md $margin-side-desktop $padding-md $padding-md;
+        }
+    }
+    
+    &:hover &__title {
+        opacity: 1;
+    }
+    
+    &__loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $color-white;
+        @include font-size-s;
+        z-index: 3;
+        background: rgba(0, 0, 0, 0.7);
+        padding: $spacing-sm $spacing-md;
+        border-radius: $radius-sm;
+    }
+}

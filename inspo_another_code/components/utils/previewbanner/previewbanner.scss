@@ -1,0 +1,27 @@
+
+
+.previewbanner {
+    width: 100%;
+    margin: 0 auto;
+    left: 0; 
+    top: 0;
+    height: 25px;
+    line-height: 25px;
+    font-size: 0.8rem;
+    text-align: center;
+    position: fixed;
+    background: blue;
+    color: white;
+    z-index: 2000;
+    a {
+        color: white;
+        text-decoration: underline;
+    }
+}
+
+@media all and (max-width: 800px) {
+    .previewbanner {
+        line-height: 2;
+        width: 100%;
+    }
+}

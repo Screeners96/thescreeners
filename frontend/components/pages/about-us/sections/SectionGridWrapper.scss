@@ -1,0 +1,35 @@
+@import "../../../_setup/vars.scss";
+
+.about-us-section--grid-wrapper {
+    padding: 0 $margin-side 0 $margin-side;
+    margin: $margin auto;
+    width: 100%;
+    aspect-ratio: $cinema-scope-slider;
+    box-sizing: border-box;
+    position: relative;
+
+
+    @include sm {
+        aspect-ratio: $cinema-scope-slider-reversed;
+    }
+    @include mm {
+        aspect-ratio: $cinema-scope-slider-reversed;
+    }
+    
+    .section-grids {
+        margin-bottom: $spacing-xl;
+    }
+
+    @include sm {
+        padding: 0 $margin-side-mobile 0 $margin-side-mobile;
+    }
+
+    @include mm {
+        padding: 0 $margin-side-tablet 0 $margin-side-tablet;
+    }
+
+    @include lg {
+        padding: 0 $margin-side-desktop 0 $margin-side-desktop;
+    }
+}
+

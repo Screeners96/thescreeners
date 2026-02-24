@@ -1,0 +1,121 @@
+@import "./breakpoints.scss";
+@import "./vars.scss";
+
+html {
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    @include font-size;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background: $gradient-body;
+    margin: 0;
+    padding: 0;
+}
+
+body.menu-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
+
+main {
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    overflow: hidden;
+    margin-top: $headerHeight;
+    height: calc(100vh - 2 * #{$headerHeight});
+    margin-left: $margin-side;
+    margin-right: $margin-side;
+
+    &.page--frontpage {
+        max-height: $contentHeightLanding;
+        height: $contentHeightLanding;
+        margin-top: 0;
+        margin-bottom: $margin-side;
+        top: $headerHeight;
+
+        @include sm {
+            margin-bottom: 0;
+            top: $headerHeight;
+            margin-top: $margin-side-mobile;
+        }
+
+        &.main--scrolled-down {
+            transform: translateY(30vh) scaleY(0.7);
+            transform-origin: center bottom;
+        }
+    }
+
+    @include sm {
+        margin-left: $margin-side-mobile;
+        margin-right: $margin-side-mobile;
+    }
+
+    @include mm {
+        margin-left: $margin-side-tablet;
+        margin-right: $margin-side-tablet;
+    }
+
+    @include xl {
+        margin-left: $margin-side-desktop;
+        margin-right: $margin-side-desktop;
+    }
+}
+
+.content {
+    min-height: 100%;
+    max-height: $contentHeight;
+    margin-top: $headerHeight;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+
+    @include sm {
+        justify-content: space-between;
+        padding: 0 $margin-side-mobile;
+        max-height: $contentHeight-mobile;
+        height: $contentHeight-mobile;
+    }
+
+    .page--frontpage & {
+        margin-top: 0;
+    }
+
+    @include mobile {
+        margin-left: 0;
+        padding-bottom: $spacing-lg;
+        width: 100vw;
+        max-width: 100vw;
+    }
+}
+
+a {
+    cursor: pointer;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

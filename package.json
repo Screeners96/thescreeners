@@ -1,0 +1,9 @@
+{
+  "name": "screen",
+  "private": true,
+  "description": "Root package for Vercel: frontend (Next.js) + studio at /studio",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "install:frontend": "cd frontend && npm install"
+  }
+}

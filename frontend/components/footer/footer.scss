@@ -1,0 +1,171 @@
+@import "../_setup/vars.scss";
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $headerHeight;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: opacity $transition-base;
+    
+    @include lg {
+        height: $headerHeight-desktop;
+    }
+    
+    &--menu-sliding-down {
+        opacity: 0;
+    }
+}
+
+.footer__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    gap: $margin;
+    transform: scale(0.8);
+    transform-origin: center;
+    transition: opacity $transition-base;
+    opacity: 1;
+    
+    &--scrolled {
+        opacity: 0;
+    }
+}
+
+.footer__get-in-touch {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 0 $margin-side;
+    @include font-size-s;
+    color: $color-white;
+    text-transform: uppercase;
+    margin: 0;
+    flex-shrink: 0;
+    text-decoration: none;
+    transition: all $transition-base;
+    
+    &:hover {
+        color: $color-accent-gold;
+    }
+    
+    @include mobile {
+        width: 50%;
+        padding: 0 0 0 $margin-side;
+    }
+
+    @include sm {
+        padding: 0 0 0 $margin-side-mobile;
+    }
+
+    @include mm {
+        padding: 0 0 0 $margin-side-tablet;
+    }
+
+    @include lg {
+        padding: 0 0 0 $margin-side-desktop;
+    }
+}
+
+.footer__social {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 $margin-side 0 0;
+    gap: $padding-sm;
+    flex-shrink: 0;
+    
+    @include mobile {
+        width: 50%;
+        padding: 0 $margin-side 0 0;
+        gap: $margin;
+    }
+
+    @include mm {
+        padding: 0 $margin-side-tablet 0 0;
+    }
+
+    @include lg {
+        padding: 0 $margin-side-desktop 0 0;
+    }
+}
+
+.footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    text-decoration: none;
+    @include font-size;
+    font-weight: $font-weight-bold;
+    transition: color $transition-base;
+    min-width: $svg-size;
+    min-height: $svg-size;
+    padding: 7px;
+    
+    &:hover {
+        color: $color-accent-gold;
+    }
+
+    @include sm {
+        min-width: $svg-size;
+        min-height: $svg-size;
+    }
+}
+
+.footer__social-icon {
+    width: auto;
+    height: auto;
+    max-width: $svg-size;
+    max-height: $svg-size;
+    min-width: $svg-size;
+    min-height: $svg-size;
+
+    @include sm {
+        max-width: $svg-size-mobile;
+        max-height: $svg-size-mobile;
+        min-width: $svg-size-mobile;
+        min-height: $svg-size-mobile;
+    }
+}
+
+.footer__social-icon-svg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $svg-size;
+    height: $svg-size;
+    min-width: $svg-size;
+    min-height: $svg-size;
+    
+    @include sm {
+        width: $svg-size-mobile;
+        height: $svg-size-mobile;
+        min-width: $svg-size-mobile;
+        min-height: $svg-size-mobile;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+    }
+}
+
+.footer__social-icon-text {
+    display: inline-block;
+}
+
+.page--frontpage .footer__social {
+    transform: scale(0.8);
+    transform-origin: center;
+}

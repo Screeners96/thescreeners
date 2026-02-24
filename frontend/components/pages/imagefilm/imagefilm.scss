@@ -1,0 +1,12 @@
+@import "../../_setup/vars.scss";
+
+.page--imagefilm {
+    display: flex;
+    flex-direction: column;
+
+    .trailer-grids-slider-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        flex-shrink: 0;
+    }
+}

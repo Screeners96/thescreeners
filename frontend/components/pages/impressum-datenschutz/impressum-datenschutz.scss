@@ -1,0 +1,35 @@
+@import "../../_setup/vars.scss";
+
+.page--impressum-datenschutz {
+    .impressum-section {
+        margin-bottom: $spacing-xxl;
+
+        &__body {
+            margin-top: $spacing-lg;
+
+            &.rte {
+                p {
+                    @include font-size;
+                    color: $color-white;
+                    margin: $spacing-sm 0;
+                }
+            }
+        }
+    }
+
+    .datenschutz-section {
+        margin-top: $spacing-xxl;
+
+        &__body {
+            margin-top: $spacing-lg;
+
+            &.rte {
+                p {
+                    @include font-size;
+                    color: $color-white;
+                    margin: $spacing-sm 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+echo "
+
+.next
+.next/
+/out/
+
+.vercel
+
+**/.next/cache/
+
+node_modules
+" > .gitignore

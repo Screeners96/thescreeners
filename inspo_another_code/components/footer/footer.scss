@@ -1,0 +1,36 @@
+@import '../_setup/vars.scss';
+
+.footer {
+    @include font-small;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: black;
+    color: white;
+    padding: 25px 20px 20px 340px;
+    z-index: 888;
+    box-shadow: 0 -1px 0 black;
+
+    .footer__info {
+        width: 100%;
+         p {
+             color: white !important;
+         }
+    }
+
+    a {
+        color: white;
+        text-decoration: underline;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .footer {
+        padding: 20px 40px 40px 20px;
+    }
+}

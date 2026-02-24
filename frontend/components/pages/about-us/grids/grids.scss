@@ -1,0 +1,361 @@
+@import "../../../_setup/vars.scss";
+
+.about-us-main-grids {
+    margin: $margin auto;
+    display: flex;
+    gap: $column-gap;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    
+    width: 100%;
+    aspect-ratio: $cinema-scope-slider;
+    box-sizing: border-box;
+    overflow-x: visible;
+    overflow-y: hidden;
+    @include sm {
+        aspect-ratio: $cinema-scope-slider-reversed;
+    }
+    @include mm {
+        aspect-ratio: $cinema-scope-slider-reversed;
+    }
+}
+
+.about-us-grids-slider-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    aspect-ratio: $cinema-scope-slider-reversed;
+    max-height: calc(#{$wrapperHeight} * 0.9);
+    height: calc(#{$wrapperHeight} * 0.9);
+
+    .about-us-grids-slider {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+
+        .swiper,
+        .swiper-wrapper {
+            height: 100%;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+    }
+
+    .about-us-grids-slider__slide {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        min-height: 0;
+        overflow: hidden;
+
+        .grid-wrapper {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            max-height: 100%;
+            min-height: 0;
+            flex: 1 1 auto;
+            overflow: hidden;
+        }
+    }
+
+    .about-us-grids-slider__slide .grid-wrapper {
+        .grid-wrapper__top,
+        .grid-wrapper__bottom {
+            min-height: 0;
+            max-height: 100%;
+            flex: 1 1 0;
+        }
+
+        .grid-wrapper__top > *,
+        .grid-wrapper__bottom-left > *,
+        .grid-wrapper__bottom-right > * {
+            min-height: 0;
+            max-height: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrapper-image {
+            width: 100%;
+            max-height: 100%;
+            aspect-ratio: $cinema-scope-image;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+
+            @include sm {
+                aspect-ratio: 10;
+            }
+
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+    }
+
+    .about-us-grids-slider__arrow {
+        position: absolute;
+        bottom: calc($burger * -2.9);
+        z-index: 1000;
+        background-color: $color-dark;
+        width: $burger;
+        height: $burger;
+        display: flex;
+        border-radius: $radius-sm;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: opacity $transition-base, background-color $transition-base, transform $transition-base;
+        pointer-events: auto;
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        border: none;
+        @include sm {
+            width: $burger-mobile;
+            height: $burger-mobile;
+        }
+        @include mm {
+            width: $burger-mobile;
+            height: $burger-mobile;
+        }
+        @include lg {
+            width: $burger-desktop;
+            height: $burger-desktop;
+        }
+
+        svg {
+            width: $burger-mobile;
+            height: $burger-mobile;
+            stroke: $color-white;
+            transition: stroke $transition-base;
+        }
+
+        &:hover {
+            background-color: $color-accent;
+
+            svg {
+                stroke: $color-black;
+            }
+        }
+
+        &:active {
+        }
+
+        &--left {
+            left: $padding-xs;
+        }
+
+        &--right {
+            right: $padding-xs;
+        }
+    }
+}
+
+.grid-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    flex-shrink: 1;
+
+
+    &__top,
+    &__bottom {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    
+    &__top-left,
+    &__top-right,
+    &__bottom-left,
+    &__bottom-right {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+    
+    &__item {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        min-width: 0;
+        transition: opacity $transition-base;
+        opacity: 1;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    
+    &--1-top-2-bottom {
+        flex: 1 1 calc(2 / 5 * 100%);
+        max-width: calc(2 / 5 * 100%);
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        height: 100%;
+        
+        .grid-wrapper__top {
+            width: 100%;
+            max-width: 100%;
+            flex: 1 1 auto;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: $column-gap;
+            height: 100%;
+            
+            > * {
+                flex: 1 1 auto;
+                height: 100%;
+            }
+        }
+        
+        .grid-wrapper__bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $column-gap;
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 100%;
+            
+            .grid-wrapper__bottom-left,
+            .grid-wrapper__bottom-right {
+                display: flex;
+                flex-direction: column;
+                gap: $column-gap;
+                height: 100%;
+                
+                > * {
+                    flex: 1 1 auto;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    
+    &--2-top-1-bottom {
+        flex: 1 1 calc(2 / 5 * 100%);
+        max-width: calc(2 / 5 * 100%);
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        height: 100%;
+
+        .grid-wrapper__top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $column-gap;
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 100%;
+            
+            .grid-wrapper__top-left,
+            .grid-wrapper__top-right {
+                display: flex;
+                flex-direction: column;
+                gap: $column-gap;
+                height: 100%;
+                
+                > * {
+                    flex: 1 1 auto;
+                    height: 100%;
+                }
+            }
+        }
+        
+        .grid-wrapper__bottom {
+            width: 100%;
+            max-width: 100%;
+            flex: 1 1 auto;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: $column-gap;
+            height: 100%;
+            
+            > * {
+                flex: 1 1 auto;
+                height: 100%;
+            }
+        }
+    }
+    
+    &--vertical {
+        flex: 1 1 calc(1 / 5 * 100%);
+        max-width: calc(1 / 5 * 100%);
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        
+        .grid-wrapper__item {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+    }
+    
+    &--3-vertical {
+        flex: 1 1 calc(1 / 5 * 100%);
+        max-width: calc(1 / 5 * 100%);
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $column-gap;
+        box-sizing: border-box;
+        
+        .grid-wrapper__item {
+            width: 100%;
+            max-width: 100%;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+    }
+
+    @include mobile {
+        &--1-top-2-bottom,
+        &--2-top-1-bottom {
+            grid-template-columns: 1fr;
+            
+            .grid-wrapper__top,
+            .grid-wrapper__bottom {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,70 @@
+@import "../../_setup/vars.scss";
+
+.about-us-submenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include sm {
+        padding-bottom: $padding-md;
+    }
+    @include mm {
+        padding-bottom: $padding-md;
+    }
+}
+
+.about-us-submenu__grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-md;
+    max-width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content:left;
+    margin-bottom: calc(#{$margin} * -0.6);
+    @include sm {
+        justify-content:center;
+    }
+}
+
+.about-us-submenu__item {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    transition: all $transition-base;
+    
+    a {
+        @include menu-button;
+    }
+    
+    &.active a {
+        color: $color-white;
+        border-color: $color-accent-gold;
+    }
+}
+
+.about-us-main-grids {
+    margin-bottom: $spacing-xl;
+}
+
+.about-us-section {
+    margin-bottom: $spacing-xl;
+}
+
+.about-us-section {
+    margin-bottom: $spacing-xl;
+}
+
+@import "./wrappers/wrappers.scss";
+@import "./grids/grids.scss";
+
+.about-us-grid-item,
+.section-grid-item {
+    margin-bottom: $spacing-xl;
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+

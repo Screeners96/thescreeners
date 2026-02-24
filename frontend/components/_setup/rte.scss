@@ -1,0 +1,33 @@
+@import './vars.scss';
+
+.rte {
+    color: $color-white;
+    background: transparent;
+    
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    
+    h2, h3, h4, h5, h6 {
+        color: $color-white;
+    }
+    
+    blockquote {
+        color: $color-white;
+        border-left-color: $color-white;
+    }
+    
+    a {
+        color: $color-white;
+        text-decoration: underline;
+        
+        &:hover {
+            color: $color-accent-gold;
+        }
+    }
+    
+    .rte__li__bullet {
+        background-color: $color-white;
+    }
+}

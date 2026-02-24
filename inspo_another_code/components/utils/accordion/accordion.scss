@@ -1,0 +1,65 @@
+@import "@/components/_setup/breakpoints.scss";
+@import "@/components/_setup/vars.scss";
+
+.tabs__content {
+    @include sm {
+        // border-top: solid var(--borderWidth) white;
+        // margin-top: 100px;
+    }
+}
+
+.accordion__header {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    gap: 5px;
+
+    svg {
+        height: 100%;
+        width: 20px;
+        max-width: 20px;
+        min-width: 20px;
+    }
+
+    @include sm {
+        background: black;
+        color: white;
+        border-bottom: solid var(--borderWidth) white;
+    }
+}
+
+.accordion__arr {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40px;
+    transform: rotate(0deg);
+    transition: transform 400ms;
+}
+
+.accordion__inner {
+    display: none;
+}
+
+.accordion.true {
+    .accordion__arr {
+        transform: rotate(180deg);
+    }
+
+    .accordion__inner {
+        display: block;
+    }
+}
+
+@include sm {
+    .accordion__header {
+        display: flex;
+    }
+}

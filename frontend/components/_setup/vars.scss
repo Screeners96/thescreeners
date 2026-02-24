@@ -1,0 +1,596 @@
+@import './breakpoints.scss';
+
+$font-base: 'Gotham', sans-serif;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+$letter-spacing-base: 0.01em;
+$letter-spacing-wide: 0.04em;
+$letter-spacing-tight: -0.01em;
+
+$color-black: #000000;
+$color-dark: var(--color-dark, var(--color-dark-grey, #252424));  
+$color-mid-dark: var(--color-mid-dark, #333333); 
+$color-gray: var(--color-gray, #333333);
+$color-light-gray: var(--color-light-gray, #B1B3B4);
+$color-white: #FFFFFF;
+$color-accent-gold: var(--color-accent-gold, #F9B200);
+
+$color-accent: var(--color-accent, var(--color-accent-gold, #F9B200));
+$color-light-grey: var(--color-light-grey, var(--color-light-gray, #B1B3B4));
+$color-grey: var(--color-grey, var(--color-gray, #333333));
+$color-dark-grey: var(--color-dark-grey, #252424);
+
+$gradient-body: linear-gradient(180deg, $color-black 0%, $color-mid-dark 100%);
+
+@function vw-scale($value, $design-width) {
+    @return calc(100vw * #{($value / $design-width)});
+  }
+  
+@function vh-scale($value, $design-width) {
+    @return calc(100vw * #{($value / $design-width)});
+}
+
+$spacing-xxs: 2.5px;
+$spacing-xs: 5px;
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 40px;
+$spacing-xl: 50px;
+$spacing-xxl: 80px;
+
+$padding-xxs: $spacing-xxs;
+$padding-xs: $spacing-xs;
+$padding-sm: $spacing-sm;
+$padding-md: $spacing-md;
+$padding-lg: $spacing-lg;
+$padding-xl: $spacing-xl;
+
+$padding-content: $padding-lg $padding-lg $padding-lg $padding-md;
+$padding-content-mobile: $padding-md;
+
+
+$margin-base-width: 834;
+$margin-base-value: 25;
+$margin-phone-width: 393;
+$margin-phone-value: 25;
+$margin-tablet-width: 1024;
+$margin-tablet-value: 20;
+
+$margin: vw-scale($margin-base-value, $margin-base-width);
+$margin-phone: vw-scale($margin-phone-value, $margin-phone-width);
+
+$margin-side: clamp(1rem, 10vw, 2.3rem);
+
+$margin-side-mobile: vw-scale($margin-phone-value * 1.2, $margin-phone-width);
+$margin-side-tablet: vw-scale($margin-tablet-value * 1.5, $margin-tablet-width);
+$margin-side-desktop: vw-scale($margin-base-value * 0.5, $margin-base-width);
+
+$margin-menu: vw-scale($margin-base-value * 0.5, $margin-base-width);
+$margin-menu-mobile: vw-scale($margin-phone-value * 0.6, $margin-phone-width);
+$margin-menu-tablet: vw-scale($margin-tablet-value * 0.7, $margin-tablet-width);
+$margin-menu-desktop: vw-scale($margin-base-value * 0.5, $margin-base-width);
+
+$burger: vw-scale(22, 1000);
+$burger-mobile: vw-scale(52, 1000);
+$burger-desktop: vw-scale(20, 1000);
+
+$svg-size: vw-scale(12, 1200); 
+$svg-size-mobile: vw-scale(42, 1000); 
+
+$film-ratio-width: 16;
+$film-ratio-height: 9;
+$film-ratio: calc(#{$film-ratio-height} / #{$film-ratio-width});
+
+$cinema-scope: 2.94 / 1;
+$cinema-scope-slider: 2.94 / 1;
+$cinema-scope-slider-reversed: 1 / 2.94;
+$cinema-scope-image: 1.78 / 1;
+$cinema-scope-image-vertical: 1.98 / 1;
+$cinema-scope-reversed: 1 / 1.78;
+
+$gap: vw-scale(10, $margin-base-width);
+
+$columns-count: 5;
+$column-gap: $gap;
+
+@mixin column($start, $end: null) {
+    @if $end {
+        grid-column: #{$start} / #{$end + 1};
+    } @else {
+        grid-column: #{$start};
+    }
+}
+
+@mixin column-span($span) {
+    grid-column: span #{$span};
+}
+
+@mixin grid-5-columns {
+    display: grid;
+    grid-template-columns: repeat($columns-count, 1fr);
+    gap: $column-gap;
+    width: 100%;
+}
+
+
+$section-padding: clamp(2rem, 4vw, 5rem);
+$element-gap: 1.5rem;
+$grid-gap: 2rem;
+
+$radius-default: 10px;
+$radius-sm: clamp(4px, 4vw, 5px);
+$radius-md: clamp(7px, 4vw, 8px);
+$radius-slider: clamp(10px, 10vw, 20px);
+$radius-slider-mobile: clamp(8px, 6vw, 10px);
+$radius-logo: 4.5px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+$opacity-disabled: 0.1;
+$opacity-hover: 0.7;
+$opacity-full: 1;
+$opacity-none: 0;
+
+$z-index-base: 1;
+$z-index-top: 10;
+$z-index-modal: 999;
+$z-index-overlay: 1000;
+$z-index-modal-overlay: 99999;
+
+$transition-fast: 0.15s ease;
+$transition-base: 0.25s ease;
+$transition-slow: 0.45s cubic-bezier(.075,.82,.165,1);
+
+$headerHeight: clamp(3rem, 13vh, 3.5rem);
+$headerHeight-desktop: clamp(3rem, 15vh, 5.5rem);
+
+$footerHeight: clamp(25px, 18vh, 30px);
+$headerAside: clamp(380px, 18vw, 565px);
+$navHeight: clamp(50px, 18vh, 55px);
+$content-max-width: 1600px;
+
+$titleHeight: calc(clamp(4rem, calc(min(15vh, 4rem) + min(15vw, 10rem)), 13rem) - #{$headerHeight} - #{$footerHeight});
+$titleHeight-mobile: clamp(4.5rem, 12vw, 10rem);
+$titleHeight-xl: clamp(2rem, 12vw, 6rem);
+
+@mixin titleHeight {
+    height: $titleHeight;
+
+    @include sm {
+        height: $titleHeight-mobile;
+    }
+    @include lg {
+        height: $titleHeight-xl;
+    }
+    @include xl {
+        @include lg;
+    }
+}
+
+
+$wrapperHeight: calc(100vh - #{$headerHeight} - #{$titleHeight} - #{$footerHeight} - clamp(1.5rem, 3vw, 3rem));
+$contentHeight: calc(100vh - #{$headerHeight} - #{$footerHeight});
+$contentHeight-mobile: calc(100vh - #{$headerHeight});
+$contentHeightLanding: calc(100vh - #{$headerHeight} - #{$footerHeight} - #{$footerHeight} - clamp(1.5rem, 3vw, 3rem));
+
+$borderWidth: 1px;
+$border-width: $borderWidth;
+
+
+$typography-base-width: 1920; // Design width for typography scaling
+$typography-min-width: 320; // Minimum viewport width for scaling
+
+$font-size-flag-mobile: clamp(1.5rem, 4vw, 2rem);
+$font-size-xs-mobile: clamp(0.45rem, 1.3vw, 0.6rem);
+$font-size-s-mobile: clamp(0.95rem, 2vw, 1.05rem);
+$font-size-mobile: clamp(1rem, 2.2vw, 1.1rem);
+$font-size-h2-3-mobile: clamp(2rem, 4.5vw, 3.2rem);
+$font-size-h2-mobile: clamp(1.5rem, 4.5vw, 2.2rem);
+$font-size-h3-mobile: clamp(1.1rem, 3vw, 1.3rem);
+$font-size-h3-3-mobile: clamp(0.95rem, 3vw, 1.25rem);
+$font-size-h4-mobile: clamp(0.9rem, 2.5vw, 1.1rem);
+$font-size-h5-mobile: clamp(0.8rem, 2vw, 0.95rem);
+
+$font-size-flag-tablet: clamp(2rem, 3.5vw, 2.75rem);
+$font-size-xs-tablet: clamp(0.55rem, 0.85vw, 0.65rem);
+$font-size-s-tablet: clamp(0.7rem, 1.1vw, 0.8rem);
+$font-size-tablet: clamp(0.9rem, 1.3vw, 1.1rem);
+$font-size-h2-3-tablet: clamp(1.18rem, 1.96vw, 1.56rem);
+$font-size-h2-tablet: clamp(2rem, 3.5vw, 2.8rem);
+$font-size-h3-tablet: clamp(1rem, 1.5vw, 1.2rem);
+$font-size-h4-tablet: clamp(1rem, 1.5vw, 1.2rem);
+$font-size-h5-tablet: clamp(0.9rem, 1.2vw, 1rem);
+
+$font-size-flag: clamp(2.5rem, 3vw, 3.25rem);
+$font-size-xs: clamp(0.6rem, 0.75vw, 0.7rem);
+$font-size-s: clamp(0.75rem, 0.9vw, 0.85rem);
+$font-size: clamp(0.93rem, 1vw, 1.15rem);
+$font-size-h2-3: clamp(1.66rem, 2.07vw, 2.05rem);
+$font-size-h2: clamp(2.5rem, 3.2vw, 3.2rem);
+$font-size-h3: clamp(1.1rem, 1.3vw, 1.25rem);
+$font-size-h4: clamp(1.1rem, 1.3vw, 1.25rem);
+$font-size-h5: clamp(0.95rem, 1.1vw, 1.05rem);
+
+$font-size-flag-lg: clamp(3rem, 3.2vw, 3.53rem);
+$font-size-xs-lg: clamp(0.65rem, 0.8vw, 0.65rem);
+$font-size-s-lg: clamp(0.8rem, 0.95vw, 0.8rem);
+$font-size-lg: clamp(1rem, 1.2vw, 1.25rem);
+$font-size-h2-3-lg: clamp(1.41rem, 1.91vw, 1.82rem);
+$font-size-h2-lg: clamp(2.4rem, 3.5vw, 3.3rem);
+$font-size-h3-lg: clamp(1.2rem, 1.4vw, 1.35rem);
+$font-size-h4-lg: clamp(1.2rem, 1.4vw, 1.35rem);
+$font-size-h5-lg: clamp(1rem, 1.2vw, 1.15rem);
+
+$font-size-flag-xl: clamp(3.25rem, 3.5vw, 3.8rem);
+$font-size-xs-xl: clamp(0.7rem, 0.85vw, 0.75rem);
+$font-size-s-xl: clamp(0.85rem, 1vw, 1rem);
+$font-size-xl: clamp(1.1rem, 1.3vw, 1.2rem);
+$font-size-h2-3-xl: clamp(1.43rem, 2.07vw, 1.91rem);
+$font-size-h2-xl: clamp(2.4rem, 3.8vw, 3.5rem);
+$font-size-h3-xl: clamp(1.25rem, 1.5vw, 1.4rem);
+$font-size-h4-xl: clamp(1.25rem, 1.5vw, 1.4rem);
+$font-size-h5-xl: clamp(1.05rem, 1.3vw, 1.2rem);
+
+@mixin font-flag {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-flag;
+    line-height: 1.15;
+    letter-spacing: $letter-spacing-base;
+
+    @include sm {
+        line-height: 1.25;
+        font-size: $font-size-flag-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-flag-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-flag-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-flag-xl;
+    }
+}
+
+@mixin font-size-xs {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-xs;
+    line-height: 1.2;
+    letter-spacing: $letter-spacing-base;
+
+    @include sm {
+        font-size: $font-size-xs-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-xs-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-xs-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-xs-xl;
+    }
+}
+
+@mixin font-size-s {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-s;
+    line-height: 1.2;
+    letter-spacing: $letter-spacing-base;
+
+    @include sm {
+        font-size: $font-size-s-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-s-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-s-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-s-xl;
+    }
+}
+
+@mixin font-size {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size;
+    line-height: 1.2;
+    letter-spacing: $letter-spacing-base;
+
+    @include sm {
+        font-size: $font-size-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-xl;
+    }
+}
+
+@mixin font-h2-3 {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-h2-3;
+    line-height: 135%;
+    letter-spacing: $letter-spacing-wide;
+
+    @include sm {
+        font-size: $font-size-h2-3-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-h2-3-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-h2-3-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-h2-3-xl;
+    }
+}
+
+@mixin font-h2 {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-h2;
+    line-height: 135%;
+    letter-spacing: $letter-spacing-wide;
+
+    @include sm {
+        font-size: $font-size-h2-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-h2-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-h2-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-h2-xl;
+    }
+}
+
+@mixin font-h3 {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-h3;
+    line-height: 1.2;
+    letter-spacing: $letter-spacing-base;
+
+    @include sm {
+        font-size: $font-size-h3-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-h3-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-h3-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-h3-xl;
+    }
+}
+
+@mixin font-h4 {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-h4;
+    line-height: 1.2;
+    letter-spacing: $letter-spacing-base;
+
+    @include sm {
+        font-size: $font-size-h4-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-h4-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-h4-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-h4-xl;
+    }
+}
+
+@mixin font-h5 {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-h5;
+    line-height: 1.2;
+    letter-spacing: $letter-spacing-base;
+
+    @include sm {
+        font-size: $font-size-h5-mobile;
+    }
+
+    @include mm {
+        font-size: $font-size-h5-tablet;
+    }
+
+    @include lg {
+        font-size: $font-size-h5-lg;
+    }
+
+    @include xl {
+        font-size: $font-size-h5-xl;
+    }
+}
+
+@mixin padding-content {
+    padding: $padding-content;
+    
+    @include sm {
+        padding: $padding-content-mobile;
+    }
+}
+
+@mixin padding-content-left {
+    padding-left: $padding-md;
+    
+    @include sm {
+        padding-left: $padding-md;
+    }
+}
+
+@mixin opacity-hover {
+    opacity: $opacity-hover;
+    transition: opacity $transition-base;
+    
+    &:hover {
+        opacity: $opacity-full;
+    }
+}
+
+@mixin underline {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: $color-accent-gold;
+    }
+
+    &:hover   {
+        &::after { 
+        opacity: 0;
+        }
+    }
+}
+
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-default;
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    color: $color-white;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+    background: transparent;
+    border: $border-width solid $color-accent-gold;
+    cursor: pointer;
+    transition: all $transition-base;
+}
+  
+@mixin button-hover {
+    background: $color-accent-gold;
+    color: $color-black;
+}
+  
+@mixin button-disabled {
+    opacity: $opacity-disabled;
+    cursor: not-allowed;
+    border-color: $color-gray;
+    color: $color-gray;
+}
+
+@mixin menu-button {
+    @include font-size-s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-xxs $padding-xs;
+    text-decoration: none;
+    color: $color-white;
+    text-transform: uppercase;
+    transition: all $transition-base;
+    text-align: center;
+    border: $border-width solid transparent;
+    border-radius: $radius-sm;
+    background-color: transparent;
+    
+    &:hover {
+        color: $color-white;
+        border-color: $color-accent-gold;
+        background: $color-accent-gold;
+    }
+}
+
+@mixin nav-item {
+    color: $color-white;
+    font-weight: $font-weight-regular;
+    position: relative;
+    padding-bottom: 0.4rem;
+    cursor: pointer;
+    transition: color $transition-base;
+
+    &.active {
+        color: $color-accent-gold;
+    }
+
+    &:hover {
+        color: $color-accent-gold;
+    }
+}
+
+@mixin filter-pill {
+    background: $color-mid-dark;
+    padding: 0.5rem 1rem;
+    border-radius: $radius-default;
+    color: $color-white;
+    transition: all $transition-base;
+    border: $border-width solid transparent;
+
+    &.active {
+        border-color: $color-accent-gold;
+    }
+
+    &:hover:not(.active) {
+        border-color: $color-gray;
+    }
+}
+
+@mixin card {
+    background: $color-mid-dark;
+    border-radius: $radius-default;
+    overflow: hidden;
+    transition: transform $transition-base, filter $transition-base;
+
+    &:hover {
+        transform: scale(1.02);
+        filter: brightness(1.1);
+    }
+}
+  

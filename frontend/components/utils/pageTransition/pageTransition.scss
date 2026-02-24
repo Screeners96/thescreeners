@@ -1,0 +1,48 @@
+@import "../../_setup/vars.scss";
+
+.page-transition-content {
+    position: relative;
+    z-index: 1;
+}
+
+.page-transition-shutter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    transform: translateY(-100%);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    will-change: transform;
+
+    &--from-landing {
+        background: #000;
+    }
+
+    &--open {
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+.page-transition-shutter--open ~ .page-transition-content main {
+    transform: translateY(-100vh);
+    opacity: 0;
+}
+
+main:not(.page--frontpage) {
+    &.main--enter-from-top {
+        transform: translateY(-100vh);
+        opacity: 0;
+        transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.4s ease-out;
+        
+        &.main--entered {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+

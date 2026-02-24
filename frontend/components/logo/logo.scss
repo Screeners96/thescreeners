@@ -1,0 +1,89 @@
+@import "../_setup/vars.scss";
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 $padding-sm;
+    transform: scale(0.75);
+    transform-origin: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .header--landing & {
+        transform: scale(1);
+    }
+
+    @include sm {
+        transform: scale(0.75);
+    }
+    
+    .logo__svg {
+        display: block;
+        width: auto;
+        height: 100%;
+        max-height: calc(#{$headerHeight} * 0.7);
+        min-height: calc(#{$margin} * 0.7);
+        color: $color-white;
+        transition: color $transition-base;
+        opacity: 1;
+        vertical-align: middle;
+        overflow: visible;
+        
+        path {
+            fill: currentColor;
+        }
+
+        @include sm {
+            max-height: calc(#{$headerHeight} * 0.55);
+            min-height: calc(#{$margin} * 0.55);
+        }
+    }
+    
+    &.logo--animate-in:not(.logo--visible) {
+        .logo__svg {
+            opacity: 0;
+            animation: logoFadeIn 0.6s ease 0.4s forwards;
+        }
+    }
+    
+    &.logo--animate-hover {
+        .logo__svg {
+            opacity: 1;
+        }
+    }
+    
+    &.logo--animate-out {
+        .logo__svg {
+            opacity: 1;
+        }
+    }
+    
+    &.logo--visible {
+        .logo__svg {
+            opacity: 1 !important;
+        }
+    }
+    
+    &:hover {
+        .logo__svg {
+            color: $color-accent-gold;
+        }
+    }
+}
+
+@keyframes logoFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+

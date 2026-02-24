@@ -1,0 +1,292 @@
+@import "../../_setup/vars.scss";
+
+.page--contact {
+    h3 {
+        @include font-h3;
+        color: $color-white;
+        margin: $spacing-lg 0 $spacing-md 0;
+        
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+
+    p {
+        @include font-size;
+        color: $color-white;
+        margin: $spacing-sm 0;
+        width: max-content;
+
+        a {
+            color: $color-white;
+        }
+    }
+
+    [data-readable="true"] {
+        color: $color-white;
+    }
+
+    &__container {
+        margin: $margin auto;
+        margin-top: calc(#{$margin} * 0.4);
+        width: 100%;
+        aspect-ratio: $cinema-scope-slider;
+        box-sizing: border-box;
+        position: relative;
+
+        @include sm {
+            padding: 0 $margin-side-mobile 0 $margin-side-mobile;
+            aspect-ratio: $cinema-scope-slider-reversed;
+        }
+
+        @include mm {
+            padding: 0 $margin-side-tablet 0 $margin-side-tablet;
+            aspect-ratio: $cinema-scope-slider-reversed;
+        }
+
+        @include lg {
+            padding: 0 $margin-side-desktop 0 $margin-side-desktop;
+        }
+    }
+    
+    &_map_wrapper {
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $spacing-lg;
+        border-radius: $radius-lg 0 0 $radius-lg;
+        padding: $spacing-lg $spacing-lg 0 $spacing-lg;
+        margin-bottom: 0;
+        max-width: 50%;
+        width: 50%;
+        height: 100%;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $color-dark-grey;
+            opacity: 0.9;
+            border-radius: $radius-lg 0 0 $radius-lg;
+            z-index: -1;
+          
+        }
+        z-index: 2;
+        
+        @include sm {
+            grid-template-columns: 1fr;
+            padding: $spacing-md $spacing-md 0 $spacing-md;
+            gap: $spacing-md;
+            max-width: 100%;
+            width: 100%;
+            height: 50%;
+            top: 0;
+            left: 0;
+            border-radius: $radius-lg;
+            
+            &::before {
+                border-radius: $radius-lg;
+            }
+        }
+    }
+
+    &__form-section {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        max-width: 80%;
+        
+        @include sm {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    &__form-title {
+        @include font-h3;
+        color: $color-white;
+        margin: 0 0 $spacing-md 0;
+        font-weight: $font-weight-bold;
+
+        @include sm {
+            margin: 0;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: $padding-xs;
+    }
+
+    &__form-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__label {
+        @include font-size-s;
+        color: $color-white;
+        margin-bottom: $spacing-xs;
+        font-weight: $font-weight-regular;
+
+    }
+
+    &__input,
+    &__textarea {
+        @include font-size-s;
+        padding: $padding-sm $padding-xs;
+        background: transparent;
+        border: $border-width solid $color-black;
+        border-radius: $radius-sm;
+        color: $color-white;
+        font-family: $font-base;
+        width: 120%;
+        max-width: 120%;
+        transition: border-color $transition-base;
+        @include sm {
+            width: 100%;
+            max-width: 100%;
+        }
+        @include mm {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        &::placeholder {
+            color: $color-light-gray;
+            opacity: 0.7;
+        }
+        
+        &:focus {
+            outline: none;
+            border-color: $color-accent-gold;
+        }
+        
+        &:hover:not(:focus) {
+            border-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    &__textarea {
+        resize: vertical;
+        min-height: 120px;
+        font-family: $font-base;
+        @include sm {
+            min-height: 60px;
+            height: 60px;
+        }
+        @include mm {
+            min-height: 60px;
+            height: 60px;
+        }
+    }
+
+    &__submit-button {
+        @include menu-button;
+        border-color: $color-accent-gold; 
+        width: max-content;
+        margin-top: $padding-sm;
+    }
+
+    &__success-message {
+        @include font-size-s;
+        color: $color-accent-gold;
+        margin-top: $spacing-sm;
+    }
+
+    &__address-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__address-title {
+        @include font-h3;
+        color: $color-white;
+        margin: 0 0 $spacing-md 0;
+        font-weight: $font-weight-bold;
+        display: block;
+        @include sm {
+            margin: 0;
+        }
+    }
+
+    &__address-text {
+        color: $color-white;
+        margin-bottom: $spacing-md;
+        @include sm {
+            margin: 0;
+        }
+        
+        p {
+            @include font-size;
+            color: $color-white;
+            margin: $spacing-xs 0;
+            line-height: 200%;
+        }
+    }
+
+    &__phone {
+        @include font-size;
+        color: $color-white;
+        margin-bottom: $spacing-md;
+        @include underline;
+    }
+    &__email {
+    @include underline;
+    }
+
+    &__map {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        @include sm {
+            display: none;
+        }
+        @include mm {
+            display: none;
+        }
+        
+        .google-maps {
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            
+            &__container {
+                border-radius: $radius-lg;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        
+        @include sm {
+            top: 50%;
+            height: 50%;
+            border-radius: $radius-lg;
+    
+            
+            .google-maps {
+                &__container {
+                    border-radius: 0 0 $radius-lg $radius-lg;
+                    min-height: 300px;
+                    
+                }
+            }
+        }
+    }
+}

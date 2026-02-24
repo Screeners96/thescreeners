@@ -1,0 +1,94 @@
+@import "../../../_setup/vars.scss";
+
+.about-us-section--grid-images {
+    margin: $margin auto;
+    width: 100%;
+    aspect-ratio: $cinema-scope-slider;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    @include sm {
+        aspect-ratio: $cinema-scope-slider-reversed;
+    }
+    @include mm {
+        aspect-ratio: $cinema-scope-slider-reversed;
+    }
+
+    .section-images-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        column-gap: $margin-side;
+        row-gap: $headerHeight;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        overflow-y: auto;
+        padding: $headerHeight $margin-side;
+        box-sizing: border-box;
+
+        @include lg {
+            padding: $headerHeight-desktop $margin-side-desktop;
+        }
+
+        @include sm {
+            gap: $margin-side-mobile;
+            padding: 0;
+        }
+
+        @include mm {
+            gap: $margin-side-tablet;
+            padding: 0;
+        }
+
+        @include lg {
+            gap: $margin-side-desktop;
+            padding: $spacing-md $margin-side-desktop;
+        }
+    }
+    
+    .section-image-item {
+        $base-width: calc((100% - 3 * #{$margin-side}) / 4);
+        flex: 0 0 $base-width;
+        width: $base-width;
+        min-width: calc(#{$base-width} * 0.6);
+        max-width: calc(#{$base-width} * 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+        @include sm {
+            $base-width: 20vw;
+            flex: 0 0 $base-width;
+            width: $base-width;
+            min-width: calc(#{$base-width} * 1.5);
+            max-width: calc(#{$base-width} * 3);
+        }
+
+        @include mm {
+            $base-width: calc((100% - 3 * #{$margin-side-tablet}) / 4);
+            flex: 0 0 $base-width;
+            width: $base-width;
+        }
+        
+        img {
+            width: 55%;
+            height: auto;
+            object-fit: cover;
+        }
+
+    }
+
+    @include lg {
+        .section-image-item {
+            $base-width: calc((100% - 3 * #{$margin-side-desktop}) / 4);
+            flex: 0 0 $base-width;
+            width: $base-width;
+        }
+    }
+}
+

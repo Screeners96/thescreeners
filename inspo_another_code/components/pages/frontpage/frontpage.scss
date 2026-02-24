@@ -1,0 +1,33 @@
+@import "@/components/_setup/breakpoints.scss";
+@import "@/components/_setup/vars.scss";
+
+.frontpage-modules {
+    padding-top: 100px;
+}
+
+@media screen and (max-width: 800px) {
+    .frontpage-modules {
+        padding-top: 0;
+    }
+}
+
+.title__main {
+    margin-left: -9999px;
+    line-height: 0; 
+    text-indent: -9999px;
+}
+
+.content-intro {
+    position: relative;
+    width: calc(100vw - var(--headerAside) + var(--borderWidth));
+    margin-left: calc(var(--headerAside) - var(--borderWidth));
+    border-left: solid var(--borderWidth) black;
+    @include sm {
+        margin-bottom: 150px;
+        margin-left: 0;
+        width: 100vw;
+    }
+    h2 {
+        margin-bottom: 0 !important;
+    }
+}

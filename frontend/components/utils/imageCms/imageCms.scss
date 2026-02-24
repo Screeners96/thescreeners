@@ -1,0 +1,20 @@
+@import "../../_setup/vars.scss";
+
+// Blur effect and border for lazy-loaded images
+// The small placeholder will appear blurred until the full image loads
+img.lazyload {
+    filter: blur(10px);
+    transition: filter 0.4s ease-out, border 0.3s ease-out;
+    border: 1px solid $color-white;
+    box-sizing: border-box;
+    border-radius: inherit; // Respect any border-radius set on the image or parent
+}
+
+// Remove blur and border once image is loaded and smoothly transition to sharp image
+img.lazyloaded {
+    filter: blur(0);
+    border: none;
+    box-sizing: border-box;
+    border-radius: inherit; // Keep border-radius even after border is removed
+}
+
