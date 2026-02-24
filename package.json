@@ -4,7 +4,9 @@
   "description": "Root package for Vercel: frontend (Next.js) + studio at /studio",
   "scripts": {
     "build": "cd frontend && npm run build",
-    "install:frontend": "cd frontend && npm install"
+    "install:frontend": "cd frontend && npm install",
+    "clean": "rm -rf frontend/.next .vercel",
+    "clean:all": "rm -rf frontend/.next frontend/node_modules .vercel"
   },
   "dependencies": {
     "next": "13.2.4"
