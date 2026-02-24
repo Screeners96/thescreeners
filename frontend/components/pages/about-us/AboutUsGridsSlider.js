@@ -2,7 +2,6 @@
 
 import { Fragment, useEffect, useRef, useState, useCallback } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
 import GridRenderer from "./grids"
 
 const MOBILE_BREAKPOINT = 780

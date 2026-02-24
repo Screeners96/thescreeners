@@ -3,7 +3,7 @@ import PageTransition from "../components/utils/pageTransition/pageTransition"
 
 // CSS
 // Vendor
-import 'swiper/css';
+import 'swiper/css/bundle';
 
 // Setup
 import '../components/_setup/reset.scss'

@@ -3,9 +3,6 @@
 import { useEffect, useRef, useState, useCallback } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation, Pagination } from "swiper"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
 import GridRenderer from "./index"
 
 SwiperCore.use([Navigation, Pagination])
