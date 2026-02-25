@@ -60,6 +60,9 @@ import "../components/utils/pageTransition/pageTransition.scss"
 // Shared Grids
 import "../components/grids/grids.scss"
 
+// Studio (global overrides for /studio route)
+import "../components/studio/studio.scss"
+
 
 export default function App({ Component, pageProps, router }) {
     const isStudio = router.pathname.startsWith('/studio')
