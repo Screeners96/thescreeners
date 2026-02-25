@@ -13,6 +13,7 @@
     "@portabletext/react": "^2.0.2",
     "@sanity/client": "^5.4.1",
     "@sanity/color-input": "^3.0.2",
+    "@sanity/icons": "^2.11.8",
     "@sanity/image-url": "^1.0.2",
     "@sanity/language-filter": "^3.1.0",
     "@sanity/vision": "^3.16.7",
