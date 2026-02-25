@@ -11,6 +11,8 @@ const nextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@sanity/icons': path.resolve(__dirname, 'node_modules/@sanity/icons'),
+      '@sanity/color-input': path.resolve(__dirname, 'node_modules/@sanity/color-input'),
+      'sanity-plugin-media': path.resolve(__dirname, 'node_modules/sanity-plugin-media'),
     }
     return config
   },
