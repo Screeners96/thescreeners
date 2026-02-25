@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "installCommand": "yarn install && cd ../studio-thescreeners && npm install",
+  "installCommand": "yarn install",
   "functions": {
     "pages/api/**/*.js": {
       "maxDuration": 10
