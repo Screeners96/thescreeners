@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { NextStudio } from 'next-sanity/studio'
+import './studio.scss'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
@@ -39,6 +40,15 @@ const baseConfig = defineConfig({
 
 export default function StudioWithMedia() {
   const [config, setConfig] = useState(baseConfig)
+
+  useEffect(() => {
+    document.documentElement.classList.add('studio-route')
+    document.body.classList.add('studio-route')
+    return () => {
+      document.documentElement.classList.remove('studio-route')
+      document.body.classList.remove('studio-route')
+    }
+  }, [])
 
   useEffect(() => {
     import('sanity-plugin-media')

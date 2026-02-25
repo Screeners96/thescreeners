@@ -1,0 +1,13 @@
+/* Restore normal document flow for Sanity Studio – setup.scss blocks scrolling */
+html.studio-route {
+  overflow: auto !important;
+  height: auto !important;
+}
+
+body.studio-route {
+  overflow: auto !important;
+  position: static !important;
+  height: auto !important;
+  width: auto !important;
+  min-height: 100vh;
+}

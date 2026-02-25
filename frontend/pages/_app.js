@@ -62,6 +62,12 @@ import "../components/grids/grids.scss"
 
 
 export default function App({ Component, pageProps, router }) {
+    const isStudio = router.pathname.startsWith('/studio')
+    
+    if (isStudio) {
+        return <Component {...pageProps} key={router.asPath} />
+    }
+    
     return (
         <PageTransition>
             <Layout {...pageProps} >
