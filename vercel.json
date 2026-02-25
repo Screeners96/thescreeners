@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
+  "installCommand": "yarn install && cd ../studio-thescreeners && npm install",
   "functions": {
     "pages/api/**/*.js": {
       "maxDuration": 10
