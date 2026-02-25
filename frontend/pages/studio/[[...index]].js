@@ -1,9 +1,8 @@
-import { NextStudio } from 'next-sanity/studio'
 import { metadata } from 'next-sanity/studio/metadata'
-import config from '../../../studio-thescreeners/sanity.config'
+import StudioWithMedia from '../../components/studio/StudioWithMedia'
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return <StudioWithMedia />
 }
 
 export { metadata }
